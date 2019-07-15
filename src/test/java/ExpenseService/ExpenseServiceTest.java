@@ -23,8 +23,13 @@ class ExpenseServiceTest {
     @Test
     void should_return_expense_type_A_if_project_is_external_and_name_is_project_A() throws UnexpectedProjectTypeException {
         // given
+        ProjectType projectType = ProjectType.EXTERNAL;
+        String projectName = "Project A";
+        Project project = new Project(projectType, projectName);
         // when
+        ExpenseType expenseType = ExpenseService.getExpenseCodeByProjectTypeAndName(project);
         // then
+        Assertions.assertEquals(ExpenseType.EXPENSE_TYPE_A, expenseType);
     }
 
     @Test
